@@ -1,0 +1,109 @@
+---
+title: "Git Practice with RStudio"
+author: "Your name here"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(nycflights13)
+library(lubridate) 
+
+# Import data
+chicago <- readRDS("chicago.rds")
+heroes <- read_csv("heroes.csv")
+powers <- read_csv("powers.csv")
+```
+
+## Introduction
+
+As a group, pick one or two of the following questions to explore. After you answer each sub-question, save and commit your changes (I recommend knitting at this point to make sure your code runs). At the end of each larger question, push your changes to GitHub and verify that your project on GitHub updated.
+
+## Questions
+
+
+
+## Data Transformation IE 4. (Book exercises 5.5)
+
+#### Question 1
+
+1. Currently dep_time and sched_dep_time are convenient to look at, but hard to compute with because they’re not really continuous numbers. Convert them to a more convenient representation of number of minutes since midnight. (Hint: use modulo arithmetic and integer division; this is tricky!)
+
+```{r}
+
+```
+
+#### Question 2
+
+2. Compare air_time with arr_time - dep_time. What do you expect to see? What do you see? What do you need to do to fix it? You don't actually need to fix it-- just explain how you would. (Hint: you may need to check the [documentation](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236) for the data)
+
+```{r}
+
+```
+
+#### Question 3
+
+3. Compare dep_time, sched_dep_time, and dep_delay. How would you expect those three numbers to be related?
+
+```{r}
+
+```
+
+#### Question 4
+
+4. Find the 10 most delayed flights using a ranking function. How do you want to handle ties? Carefully read the documentation for min_rank(). 
+
+```{r}
+
+```
+
+
+## Discussion Exercises:
+
+
+#### DE2. All about NA: 
+
+Play around with NA values. What happens if you find the mean of a variable that has missing data? How can you avoid this? Discuss the pros and cons of each approach, and why you think R takes the default setting that it does.
+
+Then dig deeper: Try to predict the results of each of the following pieces of code, and discuss whether the results make sense based on your previous thoughts about NA's.
+
+```{r, eval = FALSE}
+NA^0
+
+NA | TRUE
+
+NA & FALSE
+
+NA | FALSE
+
+NA * 0 
+
+NA == NA
+
+NA^FALSE | NA^TRUE
+
+NA^FALSE & NA^TRUE
+```
+
+#### DE 3: Filter vs [ ]
+
+We learned in week 1 and 2 to subset a vector or data frame using [ ]. This is very similar to filter, but the syntax is different. For instance, to select the flights which traveled the maximum distance, we could use:
+
+```{r}
+maxdist <- max(flights$distance, na.rm = TRUE)
+
+flights[flights$distance == maxdist,]
+
+```
+
+Compare this approach to using filter. Which do you like better? Which is clearer? Consider also the following example, which may be relevant: 
+
+(You may need to change the name of the temperature varaible below if you already completed BE3.)
+
+```{r}
+maxtemp <- max(chicago$tmpd, na.rm = TRUE)
+
+chicago[chicago$tmpd == maxtemp,]
+```
+
