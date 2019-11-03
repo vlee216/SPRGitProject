@@ -9,6 +9,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(nycflights13)
 library(lubridate) 
+library(Lock5Data)
 
 # Import data
 chicago <- readRDS("chicago.rds")
@@ -18,13 +19,88 @@ powers <- read_csv("powers.csv")
 
 ## Introduction
 
-As a group, pick one or two of the following questions to explore. After you answer each sub-question, save and commit your changes (I recommend knitting at this point to make sure your code runs). At the end of each larger question, push your changes to GitHub and verify that your project on GitHub updated.
+As a group, pick one or two of the following questions to explore. Each question has at leat 2 sub-questions. 
 
-## Questions
+After you answer each sub-question, save and commit your changes (I recommend knitting at this point to make sure your code runs). At the end of each larger question, push your changes to GitHub and verify that your project on GitHub updated.
+
+You do not need to correctly solve every part of the question; the goal is to practice workflow with RStudio + GitHub. 
+
+# Questions
+
+## I. Data Joins Exercise 
+
+Superpowers challenge problem: this is a question that combines skills from chapter 5 (data transformation) and chapter 13 (joins). 
+
+Between DC and Marvel, which publisher's heroes tend to have more powers? Let's compare visually and numerically.
+
+To answer this question, you will need to:
+
+#### Question 1
+
+Filter the heroes data to only include Marvel or DC. You can also eliminate the DC version of Captain Marvel.
+
+```{r}
+
+```
+
+
+#### Question 2
+
+Create a new variable called "num_powers" in the powers data set counting the number of powers each character has. (This is tricky; there are multiple ways to approach this. You may want to play with the rowSums() function, or see Boern's answer [here](https://stackoverflow.com/questions/28873057/sum-across-multiple-columns-with-dplyr)).
+
+```{r}
+
+```
 
 
 
-## Data Transformation IE 4. (Book exercises 5.5)
+#### Question 3
+
+
+Join the two data sets together by character name and only keep name, publisher, and number of powers
+
+```{r}
+
+```
+
+
+#### Question 4
+
+Group by publisher and look at the distributions of numbers of powers within each publisher by creating summary tables (min, median, mean, max)
+
+```{r}
+
+```
+
+
+#### Question 5
+
+Create a graph such as a histogram or boxplot showing the numbers of powers per character for Marvel vs DC. 
+
+```{r}
+
+```
+
+
+#### Question 6
+
+Write a couple sentences to compare the distributions and decide if one publisher seems to have characters with more powers overall.
+
+__Your answer:__
+
+
+
+#### Question 7
+
+Write a couple sentences critiquing this approach. Discuss at least one major problem that prevents our code from actually measuring what we are trying to measure.
+
+__Your answer:__
+
+
+
+## II. Data Transformation Exercise
+
+This is R for Data Science Exercise 5.5.
 
 #### Question 1
 
@@ -59,7 +135,22 @@ As a group, pick one or two of the following questions to explore. After you ans
 ```
 
 
-## Discussion Exercises:
+
+
+## III. Data Visualization Exercise
+
+Let's make maps using ggplot and the `HappyPlanetIndex` data.
+
+#### Question 1
+
+1. See if you can adapt the textbook code for the map of New Zealand in section 3.9 to display a map of the world instead. Color the continents forest green with a lemon chiffon outline. Check out [this overview](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf) of colors in R if you want to play with the coloring a bit.
+
+#### Question 2
+
+2. Create a choropleth map of world happiness using `HappyPlanetIndex` data. In other words, create a world map, but instead of having every country the same color, apply different colors based on the happiness level of that country (using the Happiness variable in the HappyPlanetIndex data set). [This guide](https://www.datanovia.com/en/blog/how-to-create-a-map-using-ggplot2/) can get you started.
+
+
+## IV. Data Transformation Discussion Exercises:
 
 
 #### DE2. All about NA: 
