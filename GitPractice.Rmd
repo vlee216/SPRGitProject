@@ -159,9 +159,19 @@ ggplot(world , aes(long, lat, group = group)) +
 
 2. Create a choropleth map of world happiness using `HappyPlanetIndex` data. In other words, create a world map, but instead of having every country the same color, apply different colors based on the happiness level of that country (using the Happiness variable in the HappyPlanetIndex data set). [This guide](https://www.datanovia.com/en/blog/how-to-create-a-map-using-ggplot2/) can get you started.
 
-
+  h
 ```{r}
+Happy <- HappyPlanetIndex %>%
+  select(Country, Happiness)
 
+world_edit <- world %>%
+  rename(Country = region)
+
+HappyMap <- left_join(Happy, world_edit, by = "Country")
+
+ggplot(HappyMap , aes(long, lat, group = group)) +
+  geom_polygon(aes(fill = Happiness)) +
+  coord_quickmap()
 
 ```
 
