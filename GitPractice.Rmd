@@ -1,6 +1,6 @@
 ---
 title: "Git Practice with RStudio"
-author: "Your name here"
+author: "Veronica Lee"
 output: html_document
 ---
 
